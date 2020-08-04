@@ -6,7 +6,7 @@
 - vscode extensions - python, docker 설치
 - docker-compose up -d   (명령어 입력)
 - vscode debug-run으로 가서 실행
-- docker extension 설치 후 docker 탭에서 실행중인 container 우클릭 open in browser
+- docker extension 설치 후 docker 탭에서 실행중인 container 우클릭 open in browser (이러면 30000번대 포트에서 개발 가능)
 - degug-run 탭에서 breakpoints - uncaught exceptions 체크 해제
 
 ---
@@ -35,3 +35,4 @@ after
         python manage.py runserver 0:8000
 ```
 
+- 이후 docker-compose up -d 입력 후 localhost:8000 에서 개발 진행
