@@ -13,7 +13,7 @@
 ---
 
 ### 일반 실행방법 (디버깅 불가...)
-### services -> django -> command 의 명령어 변경
+### docker-compose.yml -> services -> django -> command 의 명령어 변경
 
 before
 ```
