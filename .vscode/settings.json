@@ -1,7 +1,0 @@
-{
-    "window.zoomLevel": 1,
-    "editor.fontSize": 13,
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
-    }
-}
