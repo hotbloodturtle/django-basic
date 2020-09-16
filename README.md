@@ -1,23 +1,34 @@
 # docker, django 기본 개발환경
+
 - 특별히 환경구축 하지 않고 docker만 설치되어있으면 바로 개발 가능
 
+### 1. vscode 로 실행 방법 (디버깅가능)
 
-### vscode 로 실행 방법 (디버깅가능)
 - vscode extensions - python, docker 설치
-- docker-compose up -d   (명령어 입력)
+- docker-compose up -d (명령어 입력)
 - vscode debug-run으로 가서 실행
 - docker extension 설치 후 docker 탭에서 실행중인 container 우클릭 open in browser (이러면 30000번대 포트에서 개발 가능)
 - degug-run 탭에서 breakpoints - uncaught exceptions 체크 해제
+- vscode의 Remote Development extension 설치하고 사용하면 python select interpreter도 가능!!
 
 ---
+
 ---
 
-### 일반 실행방법 (디버깅 불가...)
+---
+
+---
+
+---
+
+### 2. 일반 실행방법 (디버깅 불가...)
+
 ### docker-compose.yml -> services -> django -> command 의 명령어 변경
 
 before
+
 ```
-    command: 
+    command:
       - bash
       - -c
       - |
@@ -26,8 +37,9 @@ before
 ```
 
 after
+
 ```
-    command: 
+    command:
       - bash
       - -c
       - |
