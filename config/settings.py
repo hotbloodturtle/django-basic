@@ -54,7 +54,11 @@ DATABASES = {
         'NAME': os.environ.get('DJANGO_DB_NAME', 'sampledb'),
         'USER': os.environ.get('DJANGO_DB_USERNAME', 'sampleuser'),
         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'samplesecret'),
-        'HOST': os.environ.get('DJANGO_DB_HOST', 'db'),
+
+        # if not use docker django server
+        'HOST': os.environ.get('DJANGO_DB_HOST', 'localhost'),
+        # 'HOST': os.environ.get('DJANGO_DB_HOST', 'db'),
+
         'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }
 }

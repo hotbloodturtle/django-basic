@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 volumes:
   django_sample_db_dev: {}
@@ -13,6 +13,8 @@ services:
       - POSTGRES_USER=sampleuser
       - POSTGRES_PASSWORD=samplesecret
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+    ports:
+      - "5432:5432"
 
   django:
     build:
@@ -27,14 +29,13 @@ services:
       - DJANGO_DB_PASSWORD=samplesecret
       - DJANGO_SECRET_KEY=dev_secret_key
     ports:
-      - 8000
-      - 5678:5678
-    command: 
+      - "8000:8000"
+    command:
       - bash
       - -c
       - |
         python manage.py migrate
-        pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000 --nothreading
+        python manage.py runserver 0:8000
     restart: always
     volumes:
       - ./:/app/
