@@ -1,6 +1,5 @@
 FROM python:3.7.6
-RUN apt-get update && apt-get -y install \
-    libpq-dev
+RUN apt-get update && apt-get -y install libpq-dev && apt-get -y install vim
 
 WORKDIR /app
 ADD    ./requirements.txt   /app/
