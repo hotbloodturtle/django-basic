@@ -5,8 +5,11 @@ RUN apt-get update && apt-get -y install \
 WORKDIR /app
 ADD    ./requirements.txt   /app/
 RUN    pip install -r requirements.txt
+RUN    pip install uwsgi
 
 ADD    ./config   /app/config/
 ADD    ./manage.py   /app/
 
-CMD ["python", "manage.py", "runserver", "0:8000"]
+EXPOSE 80
+
+CMD uwsgi --http "0.0.0.0:8000" --module config.wsgi --master --processes 4 --threads 2
