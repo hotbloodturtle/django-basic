@@ -26,6 +26,7 @@ services:
       - DJANGO_DB_USERNAME=sampleuser
       - DJANGO_DB_PASSWORD=samplesecret
       - DJANGO_SECRET_KEY=dev_secret_key
+      - DJANGO_SETTINGS_MODULE=config.settings.local
     ports:
       - 8000
       - 5678:5678
