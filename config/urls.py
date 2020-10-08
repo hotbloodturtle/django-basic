@@ -2,6 +2,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.decorators.csrf import csrf_exempt
+
+from graphene_django.views import GraphQLView
 
 from .views import alive_view
 
@@ -11,6 +14,10 @@ urlpatterns = [
     path('boards/', include('boards.urls')),
 ]
 
+# graphql
+urlpatterns += [path('graphql/', csrf_exempt(GraphQLView.as_view()))]
+
+# static 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # api document
