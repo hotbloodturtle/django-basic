@@ -11,16 +11,15 @@ from .views import alive_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('alive', alive_view),
-    path('boards/', include('boards.urls')),
 ]
 
 # graphql
 urlpatterns += [path('graphql/', csrf_exempt(GraphQLView.as_view()))]
 
-# static 
+# static
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# api document
+# rest api document
 if settings.DEBUG:
     from drf_yasg.views import get_schema_view
     from django.urls import re_path

@@ -1,31 +1,51 @@
 @hostname = localhost
-@port = 32772
+@port = 32773
 @host = http://{{hostname}}:{{port}}
 @contentType = application/json
 
-###
+### total count
 POST {{host}}/graphql/
 Content-Type: {{contentType}}
 X-REQUEST-TYPE: GraphQL
 
-query {
-    allBoards {
-        id
-        title
-        content
+query BoardList {
+    boards {
+        totalCount
     }
 }
 
 
-###
+### board list
 POST {{host}}/graphql/
 Content-Type: {{contentType}}
 X-REQUEST-TYPE: GraphQL
 
-query {
-    board(id: 2) {
-        id
-        title
-        content
+query BoardList {
+    boards {
+        edges {
+            node{
+                id
+                title
+                content
+            }
+        }
     }
 }
+
+### board list (filtering)
+POST {{host}}/graphql/
+Content-Type: {{contentType}}
+X-REQUEST-TYPE: GraphQL
+
+query BoardList {
+    boards(content: "hihi") {
+        edges {
+            node{
+                id
+                title
+                content
+            }
+        }
+    }
+}
+
