@@ -9,7 +9,7 @@ class BoardType(DjangoObjectType):
         model = Board
 
 
-class Query(object):
+class BoardsQueries(graphene.ObjectType):
     board = graphene.Field(BoardType, id=graphene.Int(), title=graphene.String(), content=graphene.String())
     all_boards = graphene.List(BoardType)
 

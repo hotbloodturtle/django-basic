@@ -1,9 +1,9 @@
 import graphene
 
-from boards.schema import Query as BoardsQuery
+from boards.schema import BoardsQueries
 
 
-class Query(BoardsQuery, graphene.ObjectType):
+class Query(BoardsQueries):
     pass
 
 
