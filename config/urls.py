@@ -14,7 +14,7 @@ urlpatterns = [
 ]
 
 # graphql
-urlpatterns += [path('graphql/', csrf_exempt(GraphQLView.as_view()))]
+urlpatterns += [path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True)))]
 
 # static
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

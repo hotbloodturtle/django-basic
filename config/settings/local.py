@@ -1,7 +1,5 @@
 from .base import *
 
-# api document 
-INSTALLED_APPS += ['drf_yasg']
 
 DATABASES = {
     'default': {

@@ -7,20 +7,30 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY'),
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 ALLOWED_HOSTS = []
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
 
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'graphene_django',
+    'drf_yasg',
+]
+
+CUSTOM_APPS = [
     'core',
     'users',
     'boards',
-
-    'rest_framework',
 ]
+
+INSTALLED_APPS = (
+    DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -34,10 +44,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'config.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
