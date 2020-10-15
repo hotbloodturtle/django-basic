@@ -1,10 +1,15 @@
 import graphene
 
-from boards.schema import BoardsQueries
+from boards.schema import BoardsQueries, BoardsMutations
 
 
 class Query(BoardsQueries):
     pass
 
 
-schema = graphene.Schema(query=Query)
+class Mutation(BoardsMutations):
+    pass
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
+# schema = graphene.Schema(query=Query)
