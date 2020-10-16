@@ -90,6 +90,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+# default static 
+STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+
+# default media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # graphql
 GRAPHENE = {
