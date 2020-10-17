@@ -103,3 +103,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 GRAPHENE = {
     'SCHEMA': 'config.schema.schema'
 }
+
+APPEND_SLASH = False

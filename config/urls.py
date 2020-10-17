@@ -16,6 +16,7 @@ urlpatterns = [
 ]
 
 # graphql
+urlpatterns += [path('graphql', csrf_exempt(FileUploadGraphQLView.as_view(graphiql=True)))]
 urlpatterns += [path('graphql/', csrf_exempt(FileUploadGraphQLView.as_view(graphiql=True)))]
 
 # static

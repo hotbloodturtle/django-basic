@@ -1,5 +1,10 @@
 from .base import *
 
+# cors headers
+INSTALLED_APPS += ['corsheaders',]
+MIDDLEWARE += ['corsheaders.middleware.CorsMiddleware',]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 DATABASES = {
     'default': {
