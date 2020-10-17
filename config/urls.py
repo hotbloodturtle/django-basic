@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 from django.views.decorators.csrf import csrf_exempt
 
 from graphene_django.views import GraphQLView
+from graphene_file_upload.django import FileUploadGraphQLView
+
 
 from .views import alive_view
 
@@ -14,10 +16,13 @@ urlpatterns = [
 ]
 
 # graphql
-urlpatterns += [path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True)))]
+urlpatterns += [path('graphql/', csrf_exempt(FileUploadGraphQLView.as_view(graphiql=True)))]
 
 # static
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# media
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # rest api document
 if settings.DEBUG:
