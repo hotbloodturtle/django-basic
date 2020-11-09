@@ -1,7 +1,7 @@
 from django_filters import rest_framework as filters
 from graphql_relay import from_global_id
 
-from ..models import Board
+from ...models import Board
 
 
 class BoardFilter(filters.FilterSet):

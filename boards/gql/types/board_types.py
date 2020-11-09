@@ -2,7 +2,7 @@ import graphene
 from graphene import relay
 from graphene_django import DjangoObjectType
 
-from ..models import Board
+from ...models import Board
 from ..filters.board_filter import BoardFilter
 from core.base_types import BaseConnection
 

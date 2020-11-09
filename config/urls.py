@@ -25,6 +25,9 @@ urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # media
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# rest api
+urlpatterns += [path('boards/', include('boards.api.urls')),]
+
 # rest api document
 if settings.DEBUG:
     from drf_yasg.views import get_schema_view

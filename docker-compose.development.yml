@@ -1,13 +1,13 @@
 version: "3"
 
 volumes:
-  django_sample_db_dev: {}
+  basic-volume: {}
 
 services:
-  db:
+  basic-db:
     image: postgres:9.6
     volumes:
-      - django_sample_db_dev:/var/lib/postgresql/data
+      - basic-volume:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=sampledb
       - POSTGRES_USER=sampleuser
@@ -22,7 +22,7 @@ services:
       dockerfile: ./compose/django/Dockerfile-dev
     environment:
       - DJANGO_DEBUG=True
-      - DJANGO_DB_HOST=db
+      - DJANGO_DB_HOST=basic-db
       - DJANGO_DB_PORT=5432
       - DJANGO_DB_NAME=sampledb
       - DJANGO_DB_USERNAME=sampleuser

@@ -2,7 +2,7 @@ import graphene
 from graphene import relay
 from graphene_django.filter import DjangoFilterConnectionField
 
-from .models import Board
+from ..models import Board
 from .mutations.board_mutations import CreateBoardMutation, UpdateBoardMutation
 from .types.board_types import BoardType
 

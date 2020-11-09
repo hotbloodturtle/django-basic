@@ -1,6 +1,6 @@
 import graphene
 
-from boards.schema import BoardsQueries, BoardsMutations
+from boards.gql.schema import BoardsQueries, BoardsMutations
 
 
 class Query(BoardsQueries):

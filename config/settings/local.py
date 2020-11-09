@@ -16,7 +16,7 @@ DATABASES = {
         # if not use docker container as django server
         # 'HOST': os.environ.get('DJANGO_DB_HOST', 'localhost'),
 
-        'HOST': os.environ.get('DJANGO_DB_HOST', 'db'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', 'basic-db'),
 
         'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }

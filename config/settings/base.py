@@ -104,4 +104,4 @@ GRAPHENE = {
     'SCHEMA': 'config.schema.schema'
 }
 
-APPEND_SLASH = False
+APPEND_SLASH = True

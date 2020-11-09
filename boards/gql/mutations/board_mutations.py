@@ -1,7 +1,7 @@
 import graphene
 from graphql_relay import from_global_id
 
-from ..models import Board
+from ...models import Board
 from ..types.board_types import BoardType
 from graphene_file_upload.scalars import Upload
 
