@@ -1,0 +1,52 @@
+version: "3"
+
+volumes:
+  basic-volume: {}
+
+services:
+  basic-db:
+    image: mysql:8.0.17
+    volumes:
+      - basic-volume:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_DATABASE=basic_db
+      - MYSQL_USER=basic_user
+      - MYSQL_PASSWORD=qwer1234
+      - MYSQL_ROOT_PASSWORD=qwer1234
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+  basic-server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile-dev
+    environment:
+      - DJANGO_DEBUG=True
+      - DJANGO_DB_HOST=basic-db
+      - DJANGO_DB_PORT=3306
+      - DJANGO_DB_NAME=basic_db
+      - DJANGO_DB_USERNAME=basic_user
+      - DJANGO_DB_PASSWORD=qwer1234
+      - DJANGO_SECRET_KEY=dev_secret_key
+      - DJANGO_SETTINGS_MODULE=config.settings.dev
+    expose:
+      - '8000'
+    restart: always
+    volumes:
+      - ./:/app/
+    depends_on:
+      - basic-db
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - '80:80'
+    depends_on:
+      - basic-server
+      
