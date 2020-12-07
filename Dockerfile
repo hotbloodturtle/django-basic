@@ -15,6 +15,14 @@ RUN    pip install -r requirements.txt
 
 ADD . .
 
-EXPOSE 80
+RUN    pip install -r requirements.txt
 
-CMD uwsgi --http "0.0.0.0:8000" --module config.wsgi --master --processes 4 --threads 2
+CMD python manage.py migrate && \
+    python manage.py collectstatic --noinput && \
+    uwsgi --socket :8000 \
+          --wsgi config.wsgi \
+          --processes 4 \
+          --threads 2 \
+          --lazy-apps \
+          --buffer-size 32768
+
