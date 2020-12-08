@@ -9,7 +9,7 @@ services:
     volumes:
       - basic-volume:/var/lib/mysql
     ports:
-      - '3306:3306'
+      # - '3306:3306'
     environment:
       - MYSQL_DATABASE=basic_db
       - MYSQL_USER=basic_user
