@@ -10,10 +10,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 RUN chsh -s /usr/bin/zsh
 
 WORKDIR /app
-ADD    ./requirements.txt   /app/
-RUN    pip install -r requirements.txt
-
-ADD . .
+ADD . /app/
 
 RUN    pip install -r requirements.txt
 

@@ -14,8 +14,18 @@ DATABASES = {
         'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD'),
         'HOST': os.environ.get('DJANGO_DB_HOST'),
         'PORT': os.environ.get('DJANGO_DB_PORT'),
+    },
+    'sub_db': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('SUB_DB_NAME'),
+        'USER': os.environ.get('SUB_DB_USERNAME'),
+        'PASSWORD': os.environ.get('SUB_DB_PASSWORD'),
+        'HOST': os.environ.get('SUB_DB_HOST'),
+        'PORT': '5432',
     }
 }
+
+DATABASE_ROUTERS = ['core.routers.MultiDBRouter']
 
 STATIC_URL = '/static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')

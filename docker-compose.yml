@@ -10,13 +10,18 @@ services:
       dockerfile: ./Dockerfile
     environment:
       - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY=dev_secret_key
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
       - DJANGO_DB_HOST=basic-db
       - DJANGO_DB_PORT=3306
       - DJANGO_DB_NAME=basic_db
       - DJANGO_DB_USERNAME=basic_user
       - DJANGO_DB_PASSWORD=qwer1234
-      - DJANGO_SECRET_KEY=dev_secret_key
-      - DJANGO_SETTINGS_MODULE=config.settings.prod
+      - SUB_DB_HOST=sub-db
+      - SUB_DB_PORT=5432
+      - SUB_DB_NAME=sub_db
+      - SUB_DB_USERNAME=sub_user
+      - SUB_DB_PASSWORD=qwer1234
     expose:
       - '8000'
     restart: always

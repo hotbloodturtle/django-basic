@@ -2,14 +2,15 @@ version: "3"
 
 volumes:
   basic-volume: {}
+  sub-volume: {}
 
 services:
   basic-db:
     image: mysql:8.0.17
     volumes:
       - basic-volume:/var/lib/mysql
-    ports:
-      # - '3306:3306'
+    # ports:
+    #   - '3306:3306'
     environment:
       - MYSQL_DATABASE=basic_db
       - MYSQL_USER=basic_user
@@ -20,19 +21,36 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
 
+  sub-db:
+    image: postgres:9.6
+    volumes:
+      - sub-volume:/var/lib/postgresql/data
+    # ports:
+    #   - "5432:5432"
+    environment:
+      - POSTGRES_DB=sub_db
+      - POSTGRES_USER=sub_user
+      - POSTGRES_PASSWORD=qwer1234
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8
+    
   basic-server:
     build:
       context: .
       dockerfile: ./Dockerfile-dev
     environment:
       - DJANGO_DEBUG=True
+      - DJANGO_SECRET_KEY=dev_secret_key
+      - DJANGO_SETTINGS_MODULE=config.settings.dev
       - DJANGO_DB_HOST=basic-db
       - DJANGO_DB_PORT=3306
       - DJANGO_DB_NAME=basic_db
       - DJANGO_DB_USERNAME=basic_user
       - DJANGO_DB_PASSWORD=qwer1234
-      - DJANGO_SECRET_KEY=dev_secret_key
-      - DJANGO_SETTINGS_MODULE=config.settings.dev
+      - SUB_DB_HOST=sub-db
+      - SUB_DB_PORT=5432
+      - SUB_DB_NAME=sub_db
+      - SUB_DB_USERNAME=sub_user
+      - SUB_DB_PASSWORD=qwer1234
     expose:
       - '8000'
     restart: always
@@ -40,6 +58,7 @@ services:
       - ./:/app/
     depends_on:
       - basic-db
+      - sub-db
 
   nginx:
     image: nginx
